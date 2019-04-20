@@ -4,6 +4,10 @@ import Domain.Car;
 import Domain.IdException;
 import Domain.Rent;
 
+import java.util.ArrayList;
+import java.util.IdentityHashMap;
+import java.util.List;
+
 public class RentService {
     private Object rentRepository;
     private sample.Repository.IRepository<Rent> bookingRepository;
@@ -23,9 +27,8 @@ public class RentService {
         }
 
         Rent rent = new Rent();
-        rentRepository.upsert(id,carId,dayNr, coverdKm);
+        rentRepository.upsert(id, carId, dayNr, coverdKm);
     }
 
-    public Rent getAll() {
-    }
+
 }

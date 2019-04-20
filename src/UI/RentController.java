@@ -14,51 +14,38 @@ import javafx.scene.control.TextField;
 
 
 
-public class BookingController {
+public class RentController {
 
-    public TableColumn tableColumnId;
-
-    public TableView tableViewBookings;
-    public TableColumn tableColumnCarId;
-    public TableColumn tableColumnRentalDays;
-    public TableColumn tableColumnUsedKm;
-    public TextField txtBookingId;
-    public TextField txtBookingCarId;
-    public TextField txtBookingRentalDays;
-    public TextField txtBookingUsedKm;
-    public Button btnAddBooking;
+    private RentService RentService;
 
 
-    private RentService bookingService;
-
-
-    public void setService(RentService bookingService) {
-        this.bookingService = bookingService;
+    public void setService(RentService rentService) {
+        this.rentService = rentService;
     }
 
-    private ObservableList<Rent> bookings = FXCollections.observableArrayList();
+    private ObservableList<Rent> rents = FXCollections.observableArrayList();
 
     @FXML
     private void initialize() {
 
         Platform.runLater(() -> {
-            bookings.addAll(bookingService.getAll());
-            tableViewBookings.setItems(bookings);
+            rents.addAll(rentService.getAll());
+            tableViewRents.setItems(rents);
         });
     }
 
 
-    public void btnAddBooking(ActionEvent actionEvent) {
+    public void btnAddRent(ActionEvent actionEvent) {
         try {
-            Integer id = Integer.parseInt(txtBookingId.getText());
-            Integer carID = Integer.parseInt(txtBookingCarId.getText());
-            Integer rentalDays = Integer.parseInt(txtBookingRentalDays.getText());
-            Integer usedKm = Integer.parseInt(txtBookingUsedKm.getText());
+            Integer id = Integer.parseInt(txtRentId.getText());
+            Integer carID = Integer.parseInt(txtRentCarId.getText());
+            Integer rentalDays = Integer.parseInt(txtRentDayNr.getText());
+            Integer usedKm = Integer.parseInt(txtRentUsedKm.getText());
 
-            bookingService.add(id, carID, rentalDays,usedKm);
+            rentsService.add(id, carID, rentalDays,usedKm);
 
-            bookings.clear();
-            bookings.addAll(bookingService.getAll());
+            rents.clear();
+            rents.addAll(rentsService.getAll());
         } catch (RuntimeException rex) {
             Common.showValidationError(rex.getMessage());
         }
