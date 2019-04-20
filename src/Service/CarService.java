@@ -56,6 +56,20 @@ public class CarService {
         public List<Rent> getAll() {
             return repository.getAll();
         }
+    public void undo() {
+        if (!undoableOperations.empty()) {
+            UndoRedoOperation<Car> lastOperation = undoableOperations.pop();
+            lastOperation.doUndo();
+            redoableOperations.add(lastOperation);
+        }
     }
 
+    public void redo() {
+        if (!redoableOperations.empty()) {
+            UndoRedoOperation<Car> lastOperation = redoableOperations.pop();
+            lastOperation.doRedo();
+            undoableOperations.add(lastOperation);
+        }
+    }
+}
 
