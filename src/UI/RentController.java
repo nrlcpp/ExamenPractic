@@ -35,7 +35,7 @@ public class RentController {
     }
 
 
-    public void AddRent(ActionEvent actionEvent) {
+    public void btnAddRent(ActionEvent actionEvent) {
         try {
             Integer id = Integer.parseInt(txtRentId.getText());
             Integer carID = Integer.parseInt(txtRentCarId.getText());
