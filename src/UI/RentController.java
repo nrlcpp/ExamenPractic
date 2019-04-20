@@ -1,5 +1,7 @@
 package UI;
 
+import Domain.Rent;
+import Service.RentService;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -30,11 +32,11 @@ public class BookingController {
     private RentService bookingService;
 
 
-    public void setService(BookingService bookingService) {
+    public void setService(RentService bookingService) {
         this.bookingService = bookingService;
     }
 
-    private ObservableList<Booking> bookings = FXCollections.observableArrayList();
+    private ObservableList<Rent> bookings = FXCollections.observableArrayList();
 
     @FXML
     private void initialize() {

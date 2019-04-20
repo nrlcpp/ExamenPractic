@@ -25,4 +25,7 @@ public class RentService {
         Rent rent = new Rent();
         rentRepository.upsert(id,carId,dayNr, coverdKm);
     }
+
+    public Rent getAll() {
+    }
 }
